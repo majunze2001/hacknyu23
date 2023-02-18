@@ -26,6 +26,9 @@ socket.on('init', ({ chartData, initIndex }) => {
                         type: 'linear',
                         display: true,
                         position: 'left',
+                        ticks: {
+                            stepSize: 1
+                        }
                     },
                     y1: {
                         type: 'linear',
@@ -33,6 +36,9 @@ socket.on('init', ({ chartData, initIndex }) => {
                         position: 'right',
                         grid: {
                             drawOnChartArea: false, // only want the grid lines for one axis to show up
+                        },
+                        ticks: {
+                            stepSize: 1
                         },
                     },
                     y2: {
@@ -42,6 +48,9 @@ socket.on('init', ({ chartData, initIndex }) => {
                         grid: {
                             drawOnChartArea: false, // only want the grid lines for one axis to show up
                         },
+                        ticks: {
+                            stepSize: 1
+                        }
                     },
                 }
             }

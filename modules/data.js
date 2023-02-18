@@ -1,14 +1,22 @@
-const carbonData = function () {
-    return Math.round(Math.random() * 10) + 10
+const genCarbonData = function () {
+    return Math.round(Math.random() * 90) + 10
 };
 
-const powerData = function () {
-    return Math.round(Math.random() * 10) + 10
-};
+// const genPowerData = function () {
+//     return Math.round(Math.random() * 90) + 100
+// };
 
-const capitalData = function () {
-    return Math.round(Math.random() * 10) + 10
-};
+// const genCapitalData = function () {
+//     return Math.round(Math.random() * 10) + 50
+// };
+
+const initCarbon = 5;
+const initPower = 5;
+const initCapital = 5;
+let GLOBALCARBON = genCarbonData();
+let dINDEX = 10;
+
+const carbonData = [genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), GLOBALCARBON]
 
 const chartData = {
     labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
