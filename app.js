@@ -23,6 +23,3 @@ io.on('connection', (socket) => {
 
 });
 
-// setInterval(function () {
-//     io.emit('update', [data.carbonData(), data.powerData(), data.capitalData()])
-// }, 1000);

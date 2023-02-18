@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "css": "npx tailwindcss -i ./public/css/raw.css -o ./public/css/style.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +23,8 @@
     "chart.js": "^4.2.1",
     "express": "^4.18.2",
     "socket.io": "^4.6.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
   }
 }

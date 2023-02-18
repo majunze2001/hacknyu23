@@ -56,7 +56,6 @@ socket.on('update', data => {
     index++;
 })
 
-
 function removeData(chart) {
     chart.data.labels.shift();
     chart.data.datasets.forEach((dataset) => {
@@ -64,6 +63,7 @@ function removeData(chart) {
     });
     chart.update();
 }
+
 function addData(chart, label, data) {
     chart.data.labels.push(label);
     chart.data.datasets.forEach((dataset, index) => {
