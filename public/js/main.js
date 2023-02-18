@@ -17,7 +17,7 @@ socket.on('init', ({ chartData, initIndex }) => {
                 //     display: true,
                 //     text: ''
                 // },
-            responsive: true,
+            // responsive: true,
             barValueSpacing: 2,
             plugins: {
                 title: {

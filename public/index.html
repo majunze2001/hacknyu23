@@ -19,11 +19,15 @@
 
 <body>
     <h1 class="text-green-300 text-center font-bold">Title</h1>
-    <div width="400" height="100">
-        
-        <canvas id="myChart"></canvas>
+    <div class="mx-auto text-center  w-full">
+        <div class="info-text w-1/6">text</div>
+        <div class="inline-block w-2/3">
+            <canvas id="myChart" style="display:inline-block" class="px-16"></canvas>
+        </div>
+
+        <div class="info-text w-1/6">text</div>
     </div>
-    <div>
+    <div class="mx-auto text-center">
         <button id="coal" class="choices text-white bg-black font-bold py-2 px-4 rounded">Coal</button>
         <button id="wind" class="choices text-white bg-blue-300 font-bold py-2 px-4 rounded">Wind</button>
         <button id="solar" class="choices text-white bg-yellow-300 font-bold py-2 px-4 rounded">Solar</button>

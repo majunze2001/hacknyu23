@@ -2,4 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* canvas{
 
+    width:1000px !important;
+    height:600px !important;
+  
+  } */
+
+.info-text{
+    @apply inline;
+}
