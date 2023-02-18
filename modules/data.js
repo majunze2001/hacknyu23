@@ -1,13 +1,13 @@
 const carbonData = function () {
-    return Math.round(Math.random() * 90) + 10
+    return Math.round(Math.random() * 10) + 10
 };
 
 const powerData = function () {
-    return Math.round(Math.random() * 90) + 100
+    return Math.round(Math.random() * 10) + 10
 };
 
 const capitalData = function () {
-    return Math.round(Math.random() * 10) + 50
+    return Math.round(Math.random() * 10) + 10
 };
 
 const chartData = {
@@ -19,6 +19,7 @@ const chartData = {
             borderColor: "red",
             data: [carbonData(), carbonData(), carbonData(), carbonData(), carbonData(), carbonData(), carbonData(), carbonData(), carbonData(), carbonData()],
             yAxisID: 'y',
+            fill:false,
         },
         {
             label: 'Power',
@@ -31,7 +32,7 @@ const chartData = {
             label: 'Capital',
             color: 'green',
             borderColor: "green",
-            data: [2, 2.5, 2.8, 1.8, 3, 2.5, 2.8, 1.8, 3, 3.1],
+            data: [20, 50, 30, 70, 90, 65, 54, 38, 49, 60],
             yAxisID: 'y2',
         },
 

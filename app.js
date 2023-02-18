@@ -21,5 +21,7 @@ io.on('connection', (socket) => {
 
     socket.emit('init', { chartData: data.chartData, initIndex: 11 });
 
+    
+
 });
 

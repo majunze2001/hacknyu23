@@ -10,6 +10,10 @@ socket.on('init', ({ chartData, initIndex }) => {
             data: chartData,
 
             options: {
+                // title: {
+                //     display: true,
+                //     text: ''
+                // },
                 responsive: true,
                 barValueSpacing: 2,
                 plugins: {
