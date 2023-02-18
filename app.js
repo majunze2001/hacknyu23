@@ -19,13 +19,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', (socket) => {
     console.log('connected', socket.id);
 
-    socket.emit('init', { chartData: data.chartData, initIndex: 11 });
+    socket.emit('init', { chartData: data.getChartData(), initIndex: data.dINDEX + 1 });
 
-    socket.on('choice', (choice) => {
+    socket.on('choice', ({choice, change}) => {
         console.log(choice);
-        data.addCarbon(Math.random() * 2 + 1);
-
-        io.emit('carbon', data.getLastCarbon());
+        data.addCarbon(change);
+        socket.broadcast.emit('carbon', data.getLastCarbon());
     })
 
 
