@@ -11,13 +11,13 @@ const capitalData = function () {
 };
 
 const chartData = {
-    labels: ["time 1", "time 2", "time 3", "time 4", "time 5", "time 6", "time 7", "time 8", "time 9", "time 10"],
+    labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
     datasets: [
         {
             label: 'CO2',
             color: 'red',
             borderColor: "red",
-            data: [carbonData(), carbonData(), carbonData(), carbonData(), carbonData(), carbonData(), carbonData(), carbonData(), carbonData(), carbonData()],
+            data: carbonData,
             yAxisID: 'y',
             fill:false,
         },
@@ -25,7 +25,7 @@ const chartData = {
             label: 'Power',
             color: 'blue',
             borderColor: "blue",
-            data: [powerData(), powerData(), powerData(), powerData(), powerData(), powerData(), powerData(), powerData(), powerData(), powerData()],
+            data: [2.5, 2.8, 1.8, 3, 3.1, 2, 2.5, 2.8, 1.8, 3],
             yAxisID: 'y1',
         },
         {
@@ -39,13 +39,24 @@ const chartData = {
     ]
 }
 
-const addData = function(label, data){
-    chartData.labels.push(label);
-    chartData.datasets.forEach((dataset, index) => {
-        dataset.data.push(data[index]);
-    });
+const getLastCarbon = function () {
+
+    return carbonData.slice(-10);
+    // return { carbonData: [carbonData.slice(-10)], dINDEX };
+}
+const addCarbon = (data) => {
+    GLOBALCARBON += data
+    carbonData.push(GLOBALCARBON);
+    dINDEX++;
+    return { carbonData, dINDEX }
 }
 
-// const 
+// const addData = function (label, data) {
+//     chartData.labels.push(label);
+//     chartData.datasets.forEach((dataset, index) => {
+//         dataset.data.push(data[index]);
+//     });
+// }
 
-export default { carbonData, powerData, capitalData, chartData, addData }
+// const 
+export default { genCarbonData, chartData, carbonData, getLastCarbon, addCarbon }

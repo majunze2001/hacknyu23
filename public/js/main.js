@@ -8,7 +8,6 @@ socket.on('init', ({ chartData, initIndex }) => {
         chartDemo = new Chart(ctx, {
             type: 'line',
             data: chartData,
-
             options: {
                 // title: {
                 //     display: true,
@@ -19,7 +18,7 @@ socket.on('init', ({ chartData, initIndex }) => {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Chart.js Line Chart - Multi Axis'
+                        text: 'Line Chart - Multi Axis'
                     }
                 },
                 scales: {
@@ -54,10 +53,31 @@ socket.on('init', ({ chartData, initIndex }) => {
 })
 
 
-socket.on('update', data => {
-    removeData(chartDemo);
-    addData(chartDemo, "time " + index, data);
+// socket.on('update', data => {
+//     removeData(chartDemo);
+//     addData(chartDemo, "time " + index, data);
+//     index++;
+// })
+
+// only updates carbon
+socket.on('carbon', newData => {
     index++;
+    // only updates carbon
+    chartDemo.data.labels.shift();
+    chartDemo.data.labels.push(index);
+
+    chartDemo.data.datasets.forEach((dataset) => {
+        dataset.data.shift();
+        if (dataset.label == 'CO2') {
+            dataset.data = newData;
+            console.log(dataset.data);
+        } else {
+            dataset.data.push(dataset.data[dataset.data.length - 1]);
+        }
+    });
+
+    chartDemo.update()
+
 })
 
 function removeData(chart) {
@@ -75,3 +95,10 @@ function addData(chart, label, data) {
     });
     chart.update();
 }
+
+document.querySelectorAll('.choices').forEach(ele => {
+    ele.addEventListener('click', function (e) {
+        const choice = e.target.id;
+        socket.emit('choice', choice);
+    })
+})

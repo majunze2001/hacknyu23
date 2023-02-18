@@ -21,7 +21,16 @@ io.on('connection', (socket) => {
 
     socket.emit('init', { chartData: data.chartData, initIndex: 11 });
 
-    
+    socket.on('choice', (choice) => {
+        console.log(choice);
+        data.addCarbon(Math.random() * 2 + 1);
+
+        io.emit('carbon', data.getLastCarbon());
+    })
+
 
 });
 
+setInterval(function () {
+    io.emit('carbon', data.getLastCarbon())
+}, 3000);
