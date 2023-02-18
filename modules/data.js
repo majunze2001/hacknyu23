@@ -16,7 +16,7 @@ const chartData = {
             borderColor: "red",
             data: carbonData,
             yAxisID: 'y',
-            fill:false,
+            fill: false,
         },
         {
             label: 'Power',
@@ -84,5 +84,9 @@ const getChartData = () => {
 //     });
 // }
 
-// const 
-export default { genCarbonData, chartData, carbonData, getLastCarbon, addCarbon, getChartData, dINDEX }
+
+
+const getGlobalCarbon = () => {
+    return GLOBALCARBON;
+}
+export default { genCarbonData, chartData, carbonData, getLastCarbon, addCarbon, getChartData, dINDEX, getGlobalCarbon }
