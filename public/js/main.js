@@ -1,6 +1,7 @@
 const socket = io();
 const ctx = document.getElementById('myChart');
 let chartDemo, index, carbon, capital, power;
+let clickCooldown = false;
 
 socket.on('init', ({ chartData, initIndex }) => {
     // try {
@@ -103,6 +104,9 @@ function addData(chart, label, data) {
 
 document.querySelectorAll('.choices').forEach(ele => {
     ele.addEventListener('click', function (e) {
+        if (clickCooldown) {
+            return;
+        }
         const choice = e.target.id;
         const change = choice == 'coal' ? 1.2 : -0.2;
         socket.emit('choice', { choice, change });
@@ -114,6 +118,7 @@ document.querySelectorAll('.choices').forEach(ele => {
         power += powerGain;
         capital -= 1;
         addData(chartDemo, index++, [carbon, power, capital]);
-
+        clickCooldown = true;
+        setTimeout(() => clickCooldown = false, 3000)
     })
 })
