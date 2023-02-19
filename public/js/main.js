@@ -125,8 +125,9 @@ socket.on('carbon', ({ newData, carbonFactor }) => {
         if (dataset.label == 'Carbon Dioxide') {
             dataset.data = newData;
             carbon = newData.slice(-1)[0];
-        } else if (dataset.label == 'Productivity on Power') {
+        } else if (dataset.label == 'Budget for Power') {
             const capitalChange = carbonFactor * (Math.log10(power));
+            console.log(capitalChange);
             capital += capitalChange;
             dataset.data.push(capital);
         } else {
@@ -163,7 +164,7 @@ document.querySelectorAll('.choices').forEach(ele => {
             return;
         }
         const choice = e.target.id;
-        const change = choice == 'coal' ? 5 : -0.5;
+        const change = choice == 'coal' ? 3 : -0.3;
         socket.emit('choice', { choice, change });
         const powerGain = choice == 'coal' ? 3 :
             choice == 'wind' ? 2 : 1;
