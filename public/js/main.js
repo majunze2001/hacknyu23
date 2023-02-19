@@ -21,6 +21,15 @@ socket.on('init', ({ chartData, initIndex }) => {
                     display: true,
                     color: 'green',
                     text: 'Your Energy, Pollution, and Cash Chart'
+                },
+                legend: {
+                    labels: {
+                        color: 'black',
+                        // This more specific font property overrides the global property
+                        font: {
+                            size: 16
+                        }
+                    }
                 }
             },
             scales: {
@@ -44,7 +53,8 @@ socket.on('init', ({ chartData, initIndex }) => {
                     ticks: {
                         color: 'red',
                         stepSize: 0.5,
-                        maxTicksLimit: 8
+                        maxTicksLimit: 8,
+                        callback: value => `${value} ppm`
                     },
                     grid: {
                         color: 'black',
@@ -76,7 +86,8 @@ socket.on('init', ({ chartData, initIndex }) => {
                     },
                     ticks: {
                         color: 'green',
-                        stepSize: 1
+                        stepSize: 1,
+                        maxTicksLimit: 8
                     }
                 },
             }
@@ -110,7 +121,9 @@ socket.on('carbon', ({ newData, carbonFactor }) => {
         }
     });
 
-    chartDemo.update()
+    chartDemo.update();
+
+    testGameOver();
 
 })
 
@@ -144,9 +157,19 @@ document.querySelectorAll('.choices').forEach(ele => {
         removeData(chartDemo);
         carbon += change;
         power += powerGain;
-        capital -= 1;
+        capital -= 0.5;
         addData(chartDemo, index++, [carbon, power, capital]);
         clickCooldown = true;
-        setTimeout(() => clickCooldown = false, 3000)
+        setTimeout(() => clickCooldown = false, 3000);
+        testGameOver();
     })
 })
+
+
+
+function testGameOver() {
+    if (capital <= 0) {
+        socket.off('carbon');
+        alert("Game over");
+    }
+}
