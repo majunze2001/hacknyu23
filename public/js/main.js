@@ -13,39 +13,58 @@ socket.on('init', ({ chartData, initIndex }) => {
         type: 'line',
         data: chartData,
         options: {
-            // title: {
-            //     display: true,
-            //     text: ''
-            // },
             responsive: true,
             maintainAspectRatio: false,
-            barValueSpacing: 2,
+            barValueSpacing: 1,
             borderWidth:5,
 
             plugins: {
                 title: {
                     display: true,
+                    color: 'green',
                     text: 'Your Energy, Pollution, and Cash Chart'
                 }
             },
             scales: {
+                x: {
+                    grid: {
+                        color: 'black',
+                        lineWidth: 1
+                    },
+                    border: {
+                        color: 'black',
+                        width: 5
+                    },
+                    ticks: {
+                        color: 'black'
+                    }
+                },
                 y: {
                     type: 'linear',
                     display: true,
                     position: 'left',
                     ticks: {
-                        stepSize: 1
-                    }
+                        color: 'red',
+                        stepSize: 0.5,
+                        maxTicksLimit: 8
+                    },
+                    grid: {
+                        color: 'black',
+                    },
+
                 },
                 y1: {
                     type: 'linear',
                     display: true,
                     position: 'right',
                     grid: {
+                        color: 'blue',
                         drawOnChartArea: false, // only want the grid lines for one axis to show up
                     },
                     ticks: {
-                        stepSize: 1
+                        color: 'blue',
+                        stepSize: 1,
+                        maxTicksLimit: 8
                     },
                 },
                 y2: {
@@ -53,9 +72,12 @@ socket.on('init', ({ chartData, initIndex }) => {
                     display: true,
                     position: { x: 1 },
                     grid: {
+                        lineWidth: 1,
+                        color: 'green',
                         drawOnChartArea: false, // only want the grid lines for one axis to show up
                     },
                     ticks: {
+                        color: 'green',
                         stepSize: 1
                     }
                 },
@@ -81,7 +103,8 @@ socket.on('carbon', ({ newData, carbonFactor }) => {
             dataset.data = newData;
             // console.log(dataset.data);
         } else if (dataset.label == 'Capital') {
-            capital *= carbonFactor * Math.log10(power);
+            // console.log(carbonFactor * Math.log10(power));
+            capital *= carbonFactor * (1 + Math.log10(power));
             dataset.data.push(capital);
         } else {
             power -= 0.3;
@@ -115,7 +138,7 @@ document.querySelectorAll('.choices').forEach(ele => {
             return;
         }
         const choice = e.target.id;
-        const change = choice == 'coal' ? 1.2 : -0.2;
+        const change = choice == 'coal' ? 5 : -0.5;
         socket.emit('choice', { choice, change });
         const powerGain = choice == 'coal' ? 3 :
             choice == 'wind' ? 2 : 1;
