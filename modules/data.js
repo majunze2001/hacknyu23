@@ -5,7 +5,7 @@ const genCarbonData = function () {
 let GLOBALCARBON = 419.47;
 let dINDEX = 10;
 
-const carbonData = [420.23, 420.99, 418.90, 417.19, 415.95, 415.78, 417.51, 418.95, 418.9, GLOBALCARBON]
+let carbonData = [420.23, 420.99, 418.90, 417.19, 415.95, 415.78, 417.51, 418.95, 418.9, GLOBALCARBON]
 
 const getLastCarbon = function () {
     return carbonData.slice(-10);
@@ -38,7 +38,7 @@ const getChartData = () => {
             },
             {
                 label: 'Budget for Power',
-                backgroundColor:  "green",
+                backgroundColor: "green",
                 borderColor: "green",
                 data: [2, 2.5, 2.8, 1.8, 3, 2.5, 2.8, 1.8, 3, 3.1],
                 yAxisID: 'y2',
@@ -48,9 +48,13 @@ const getChartData = () => {
     }
 }
 
+const reset = () => {
+    carbonData = carbonData.slice(0, 10);
+}
+
 
 
 const getGlobalCarbon = () => {
     return GLOBALCARBON;
 }
-export default { genCarbonData, carbonData, getLastCarbon, addCarbon, getChartData, dINDEX, getGlobalCarbon }
+export default { genCarbonData, carbonData, getLastCarbon, addCarbon, getChartData, dINDEX, getGlobalCarbon, reset }

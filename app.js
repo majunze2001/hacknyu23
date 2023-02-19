@@ -30,6 +30,12 @@ io.on('connection', (socket) => {
         });
     })
 
+    socket.on('disconnect', () => {
+        if (!io.sockets.sockets.size) {
+            data.reset();
+        }
+    })
+
 
 });
 
@@ -44,6 +50,9 @@ const carbonFactor = (carbon) => {
 }
 
 setInterval(function () {
+    if (!io.sockets.sockets.size) {
+        return;
+    }
     data.addCarbon(-0.05);
     io.emit('carbon', {
         newData: data.getLastCarbon(),
