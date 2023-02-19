@@ -22,7 +22,7 @@ socket.on('init', ({ chartData, initIndex }) => {
                 title: {
                     display: true,
                     color: 'green',
-                    text: 'Your Energy, Pollution, and Cash Chart',
+                    text: 'Energy, Pollution, and Cash Chart',
                     font: {
                         size: 22
                     }
