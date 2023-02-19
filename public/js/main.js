@@ -20,6 +20,8 @@ socket.on('init', ({ chartData, initIndex }) => {
             responsive: true,
             maintainAspectRatio: false,
             barValueSpacing: 2,
+            borderWidth:5,
+
             plugins: {
                 title: {
                     display: true,
