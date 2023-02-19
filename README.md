@@ -1,4 +1,7 @@
-# hacknyu23 - Energy Trade-Offs
+# hacknyu23 - Energy TradeOff
+[energytradeoff.tech](http://energytradeoff.tech)
+
+
 Companies should take environmental sustainability in to account during production. Help them make the right decision!
 ## Inspiration
 Today’s economy was built with the help of fossil fuels as its primary energy source. Fossil fuel energy resources have been fundamental to our economy for decades. However, it is one of the biggest problems that the earth is facing today. Due to the CO2 emission of fossil fuel, the level of CO2 on earth is getting higher and higher and causing abnormal environmental behavior such as climate change. Climate change leads to problems such as sea level rise, desertification, and unpredictable weather events. Most importantly, it’s killing adorable polar bears!!!! Unacceptable. 
