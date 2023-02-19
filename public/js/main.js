@@ -16,6 +16,8 @@ socket.on('init', ({ chartData, initIndex }) => {
             responsive: true,
             maintainAspectRatio: false,
             barValueSpacing: 1,
+            borderWidth:3,
+
             plugins: {
                 title: {
                     display: true,
@@ -124,6 +126,11 @@ socket.on('carbon', ({ newData, carbonFactor }) => {
         dataset.data.shift();
         if (dataset.label == 'Carbon Dioxide') {
             dataset.data = newData;
+            // console.log(dataset.data);
+            carbon=newData.slice(-1)[0];
+        } else if (dataset.label == 'Capital') {
+            // console.log(carbonFactor * Math.log10(power));
+            capital *= carbonFactor * (1 + Math.log10(power));
             carbon = newData.slice(-1)[0];
         } else if (dataset.label == 'Budget for Power') {
             const capitalChange = carbonFactor * (Math.log10(power));
@@ -139,6 +146,10 @@ socket.on('carbon', ({ newData, carbonFactor }) => {
     chartDemo.update();
 
     testGameOver();
+
+    document.getElementById("CO2_Emission").innerHTML = carbon;
+    document.getElementById("Productivity").innerHTML = power;
+    document.getElementById("Capital").innerHTML = capital;
 
 })
 
@@ -176,11 +187,16 @@ document.querySelectorAll('.choices').forEach(ele => {
         addData(chartDemo, index++, [carbon, power, capital]);
         clickCooldown = true;
         setTimeout(() => clickCooldown = false, 3000);
-        testGameOver();
+
+
+        document.getElementById("CO2_Emission").innerHTML = carbon;
+        document.getElementById("Productivity").innerHTML = power;
+        document.getElementById("Capital").innerHTML = capital;
+
     })
 })
 
-
+        testGameOver();
 
 function testGameOver() {
     if (capital <= 0) {
