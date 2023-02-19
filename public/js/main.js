@@ -22,7 +22,7 @@ socket.on('init', ({ chartData, initIndex }) => {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Your Energy, Pollution, and Cash'
+                    text: 'Your Energy, Pollution, and Cash Chart'
                 }
             },
             scales: {

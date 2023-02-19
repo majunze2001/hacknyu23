@@ -554,10 +554,6 @@ video {
   display: inline-block;
 }
 
-.inline {
-  display: inline;
-}
-
 .flex {
   display: flex;
 }
@@ -578,16 +574,16 @@ video {
   height: 0.25rem;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .w-1\/6 {
   width: 16.666667%;
 }
 
 .w-2\/3 {
   width: 66.666667%;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .transform {
@@ -703,4 +699,5 @@ video {
 
 .info-text {
   display: inline;
+  word-break: break-all;
 }

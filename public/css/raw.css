@@ -10,5 +10,5 @@
   } */
 
 .info-text{
-    @apply inline;
+    @apply inline break-all;
 }
