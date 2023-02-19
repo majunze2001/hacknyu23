@@ -53,6 +53,9 @@ setInterval(function () {
     if (!io.sockets.sockets.size) {
         return;
     }
+    if (data.getGlobalCarbon()>=600){
+        data.reset();
+    }
     data.addCarbon(-0.05);
     io.emit('carbon', {
         newData: data.getLastCarbon(),

@@ -205,4 +205,8 @@ function update() {
     document.getElementById("CO2_Emission").innerHTML = parseFloat(carbon).toFixed(2) + 'ppm';
     document.getElementById("Productivity").innerHTML = parseFloat(power).toFixed(2);
     document.getElementById("Capital").innerHTML = parseFloat(capital).toFixed(2);
+    console.log(carbon);
+    if (carbon >= 600){
+        alert('Our earth is filled with carbon dioxide :((')
+    }
 }

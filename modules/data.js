@@ -50,6 +50,7 @@ const getChartData = () => {
 
 const reset = () => {
     carbonData = carbonData.slice(0, 10);
+    GLOBALCARBON = carbonData.slice(-1)[0];
 }
 
 
