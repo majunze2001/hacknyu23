@@ -184,7 +184,7 @@ document.querySelectorAll('.choices').forEach(ele => {
         capital -= 0.5;
         addData(chartDemo, index++, [carbon, power, capital]);
         clickCooldown = true;
-        setTimeout(() => clickCooldown = false, 3000);
+        setTimeout(() => clickCooldown = false, 1000);
 
         update();
 
