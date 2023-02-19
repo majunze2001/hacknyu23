@@ -47,7 +47,7 @@ socket.on('init', ({ chartData, initIndex }) => {
                     },
                     ticks: {
                         color: 'black',
-                        // display: false
+                        display: false
                     }
                 },
                 y: {
@@ -58,7 +58,10 @@ socket.on('init', ({ chartData, initIndex }) => {
                         color: 'red',
                         stepSize: 0.5,
                         maxTicksLimit: 8,
-                        callback: value => `${value} ppm`
+                        callback: value => `${value} ppm`,
+                        font: {
+                            size: 12
+                        }
                     },
                     grid: {
                         color: 'black',
@@ -76,7 +79,10 @@ socket.on('init', ({ chartData, initIndex }) => {
                     ticks: {
                         color: 'blue',
                         stepSize: 1,
-                        maxTicksLimit: 8
+                        maxTicksLimit: 8,
+                        font: {
+                            size: 16
+                        }
                     },
                 },
                 y2: {
@@ -91,7 +97,10 @@ socket.on('init', ({ chartData, initIndex }) => {
                     ticks: {
                         color: 'green',
                         stepSize: 1,
-                        maxTicksLimit: 8
+                        maxTicksLimit: 8,
+                        font: {
+                            size: 16
+                        }
                     }
                 },
             }
