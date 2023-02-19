@@ -23,21 +23,21 @@ const getChartData = () => {
         labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
         datasets: [
             {
-                label: 'CO2',
+                label: 'Carbon Dioxide',
                 backgroundColor: 'red',
                 borderColor: "red",
                 data: getLastCarbon(),
                 yAxisID: 'y',
             },
             {
-                label: 'Power',
+                label: 'Productivity on Power',
                 backgroundColor: 'blue',
                 borderColor: "blue",
                 data: [2.5, 2.8, 1.8, 3, 3.1, 2, 2.5, 2.8, 1.8, 3],
                 yAxisID: 'y1',
             },
             {
-                label: 'Capital',
+                label: 'Budget for Power',
                 backgroundColor:  "green",
                 borderColor: "green",
                 data: [2, 2.5, 2.8, 1.8, 3, 2.5, 2.8, 1.8, 3, 3.1],

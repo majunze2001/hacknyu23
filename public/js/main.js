@@ -20,14 +20,17 @@ socket.on('init', ({ chartData, initIndex }) => {
                 title: {
                     display: true,
                     color: 'green',
-                    text: 'Your Energy, Pollution, and Cash Chart'
+                    text: 'Your Energy, Pollution, and Cash Chart',
+                    font: {
+                        size: 22
+                    }
                 },
                 legend: {
                     labels: {
                         color: 'black',
                         // This more specific font property overrides the global property
                         font: {
-                            size: 16
+                            size: 18
                         }
                     }
                 }
@@ -43,7 +46,8 @@ socket.on('init', ({ chartData, initIndex }) => {
                         width: 5
                     },
                     ticks: {
-                        color: 'black'
+                        color: 'black',
+                        // display: false
                     }
                 },
                 y: {
@@ -105,15 +109,16 @@ socket.on('carbon', ({ newData, carbonFactor }) => {
     // only updates carbon
     chartDemo.data.labels.shift();
     chartDemo.data.labels.push(index);
+    // console.log(newData);
 
     chartDemo.data.datasets.forEach((dataset) => {
         dataset.data.shift();
-        if (dataset.label == 'CO2') {
+        if (dataset.label == 'Carbon Dioxide') {
             dataset.data = newData;
-            // console.log(dataset.data);
-        } else if (dataset.label == 'Capital') {
-            // console.log(carbonFactor * Math.log10(power));
-            capital *= carbonFactor * (1 + Math.log10(power));
+            carbon = newData.slice(-1)[0];
+        } else if (dataset.label == 'Productivity on Power') {
+            const capitalChange = carbonFactor * (Math.log10(power));
+            capital += capitalChange;
             dataset.data.push(capital);
         } else {
             power -= 0.3;
