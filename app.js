@@ -44,7 +44,7 @@ const carbonFactor = (carbon) => {
 }
 
 setInterval(function () {
-    data.addCarbon(-0.1);
+    data.addCarbon(-0.05);
     io.emit('carbon', {
         newData: data.getLastCarbon(),
         carbonFactor: carbonFactor(data.getGlobalCarbon())
