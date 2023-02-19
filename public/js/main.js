@@ -77,14 +77,13 @@ socket.on('carbon', ({ newData, carbonFactor }) => {
         dataset.data.shift();
         if (dataset.label == 'CO2') {
             dataset.data = newData;
-            console.log(dataset.data);
+            // console.log(dataset.data);
         } else if (dataset.label == 'Capital') {
-            const prevV = dataset.data[dataset.data.length - 1];
-            const newV = prevV * carbonFactor * Math.log10(power);
-            dataset.data.push(newV);
-        }
-        else {
-            dataset.data.push(dataset.data[dataset.data.length - 1]);
+            capital *= carbonFactor * Math.log10(power);
+            dataset.data.push(capital);
+        } else {
+            power -= 0.3;
+            dataset.data.push(power);
         }
     });
 

@@ -24,7 +24,10 @@ io.on('connection', (socket) => {
     socket.on('choice', ({ choice, change }) => {
         console.log(choice);
         data.addCarbon(change);
-        socket.broadcast.emit('carbon', data.getLastCarbon());
+        socket.broadcast.emit('carbon', {
+            newData: data.getLastCarbon(),
+            carbonFactor: carbonFactor(data.getGlobalCarbon())
+        });
     })
 
 
@@ -41,5 +44,8 @@ const carbonFactor = (carbon) => {
 }
 
 setInterval(function () {
-    io.emit('carbon', { newData: data.getLastCarbon(), carbonFactor: carbonFactor(data.getGlobalCarbon()) })
+    io.emit('carbon', {
+        newData: data.getLastCarbon(),
+        carbonFactor: carbonFactor(data.getGlobalCarbon())
+    })
 }, 3000);

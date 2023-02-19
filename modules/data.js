@@ -2,10 +2,10 @@ const genCarbonData = function () {
     return Math.round(Math.random() * 90) + 10
 };
 
-let GLOBALCARBON = genCarbonData();
+let GLOBALCARBON = 419.47;
 let dINDEX = 10;
 
-const carbonData = [genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), genCarbonData(), GLOBALCARBON]
+const carbonData = [420.23, 420.99, 418.90, 417.19, 415.95, 415.78, 417.51, 418.95, 418.9, GLOBALCARBON]
 
 const chartData = {
     labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
@@ -76,13 +76,6 @@ const getChartData = () => {
         ]
     }
 }
-
-// const addData = function (label, data) {
-//     chartData.labels.push(label);
-//     chartData.datasets.forEach((dataset, index) => {
-//         dataset.data.push(data[index]);
-//     });
-// }
 
 
 
