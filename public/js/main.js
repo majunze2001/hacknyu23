@@ -134,7 +134,7 @@ socket.on('carbon', ({ newData, carbonFactor }) => {
             carbon = newData.slice(-1)[0];
         } else if (dataset.label == 'Budget for Power') {
             const capitalChange = carbonFactor * (Math.log10(power));
-            console.log(capitalChange);
+            // console.log(capitalChange);
             capital += capitalChange;
             dataset.data.push(capital);
         } else {

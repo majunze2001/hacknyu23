@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <script src="js/p5.min.js"></script> -->
-    <!-- <script src="js/p5.sound.min.js"></script> -->
-    <!-- <script src="js/sketch.js"></script> -->
+    <title>Energy Tradeoff</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/chart.js"></script>
 
@@ -18,26 +15,16 @@
 
 
 <body style="background-image: url('bg_wind_turbine.jpg');">
-    <h1 class="text-green-300 text-center font-bold break-normal text-2xl lg:text-4xl mt-12 mb-8">Responsive Firm -- An
-        Interactive Game</h1>
+    <h1 class="text-green-300 text-center font-bold break-normal text-2xl lg:text-4xl mt-12 mb-8">
+        Energy Tradeoff
+        <span class="block md:inline-block">-- An Interactive Emulation</span>
+    </h1>
     <div class="mx-auto text-center  w-full">
-        <!-- <div class="info-text w-1/6">
-            Tow alskdfj asd 
-            asd asdkfj asdkj sd jaskdl fjas
-            df jas asdkfj alsdf 
-            asdkj kfjsakdj
-            f sa
-        </div> -->
-
-
 
         <div class="mx-auto w-5/6 md:4/5 h-96">
             <canvas id="myChart" style="display:inline-block" class="md:mx-4 lg:mx-12"></canvas>
         </div>
 
-        <!-- <div class="info-text w-1/6">
-            This chart displaces your current capital, CO2 emmision, and energy production.
-        </div> -->
     </div>
     <div class="mx-auto text-center">
         <button id="coal" class="choices text-white bg-black font-bold py-2 px-4 rounded">Coal</button>
@@ -46,14 +33,30 @@
     </div>
     <div class="text-center mt-5">
         <div>
-            <h4 class="text-red-400 font-bold">CO2_Emission: <span id="CO2_Emission"></span></h4>
+            <h4 class="text-red-400 font-bold inline-block">CO2_Emission: <span id="CO2_Emission">---</span></h4>
+            <!-- </div>
+        <div> -->
+            <h4 class="text-blue-400 font-bold inline-block">Productivity: <span id="Productivity">---</span></h4>
+            <!-- </div>
+        <div> -->
+            <h4 class="text-green-400 font-bold inline-block">Capital: <span id="Capital">---</span></h4>
         </div>
-        <div>
-            <h4 class="text-blue-400 font-bold">Productivity: <span id="Productivity"></span></h4>
-        </div>
-        <div>
-            <h4 class="text-green-400 font-bold">Capital: <span id="Capital"></span></h4>
-        </div>
+    </div>
+
+    <div class="mx-auto w-5/6 md:4/5 text-white mt-2">
+        Our game simulates the process of running a company and choosing what type of energy resources to use: Fossil
+        Fuel, Wind, and Solar. This is a collaborative game where a lot of the players work together to sustain the CO2
+        ppm below 600. The more power a company uses, the more revenue it generates and the more CO2 emission it
+        produces. Your goal is to stay in the normal range, which is between 350 and 450 ppm. If ppm goes over 600 or
+        you run out of capital, the game is over! Choose your energy wisely!
+    </div>
+
+    <div class="mx-auto w-5/6 md:4/5 text-white mt-2 my-6">
+        Today's economy was built with the help of fossil fuels as its primary energy source and our economy depended on
+        them for decades. However, it is one of the biggest problems that the earth is facing today. Due to the CO2
+        emission of fossil fuel, the level of CO2 on earth is getting higher and higher causing abnormal environmental
+        behavior such as climate change. Climate change leads to sea level rise, desertification, and unpredictable
+        weather events. We want to raise awareness that renewable energy generating methods can save the earth.
     </div>
 
     <script src="js/main.js"></script>
