@@ -21,15 +21,31 @@ io.on('connection', (socket) => {
 
     socket.emit('init', { chartData: data.getChartData(), initIndex: data.dINDEX + 1 });
 
-    socket.on('choice', ({choice, change}) => {
+    socket.on('choice', ({ choice, change }) => {
         console.log(choice);
         data.addCarbon(change);
-        socket.broadcast.emit('carbon', data.getLastCarbon());
+        socket.broadcast.emit('carbon', {
+            newData: data.getLastCarbon(),
+            carbonFactor: carbonFactor(data.getGlobalCarbon())
+        });
     })
 
 
 });
 
+const carbonFactor = (carbon) => {
+    if (carbon <= 350) {
+        return 1.5;
+    } else if (carbon <= 450) {
+        return 1;
+    } else {
+        return 0.5;
+    }
+}
+
 setInterval(function () {
-    io.emit('carbon', data.getLastCarbon())
+    io.emit('carbon', {
+        newData: data.getLastCarbon(),
+        carbonFactor: carbonFactor(data.getGlobalCarbon())
+    })
 }, 3000);

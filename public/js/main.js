@@ -13,11 +13,12 @@ socket.on('init', ({ chartData, initIndex }) => {
         type: 'line',
         data: chartData,
         options: {
-                // title: {
-                //     display: true,
-                //     text: ''
-                // },
-            // responsive: true,
+            // title: {
+            //     display: true,
+            //     text: ''
+            // },
+            responsive: true,
+            maintainAspectRatio: false,
             barValueSpacing: 2,
             plugins: {
                 title: {
@@ -30,9 +31,9 @@ socket.on('init', ({ chartData, initIndex }) => {
                     type: 'linear',
                     display: true,
                     position: 'left',
-                        ticks: {
-                            stepSize: 1
-                        }
+                    ticks: {
+                        stepSize: 1
+                    }
                 },
                 y1: {
                     type: 'linear',
@@ -41,9 +42,9 @@ socket.on('init', ({ chartData, initIndex }) => {
                     grid: {
                         drawOnChartArea: false, // only want the grid lines for one axis to show up
                     },
-                        ticks: {
-                            stepSize: 1
-                        },
+                    ticks: {
+                        stepSize: 1
+                    },
                 },
                 y2: {
                     type: 'linear',
@@ -52,9 +53,9 @@ socket.on('init', ({ chartData, initIndex }) => {
                     grid: {
                         drawOnChartArea: false, // only want the grid lines for one axis to show up
                     },
-                        ticks: {
-                            stepSize: 1
-                        }
+                    ticks: {
+                        stepSize: 1
+                    }
                 },
             }
         }
@@ -66,7 +67,7 @@ socket.on('init', ({ chartData, initIndex }) => {
 })
 
 // only updates carbon
-socket.on('carbon', newData => {
+socket.on('carbon', ({ newData, carbonFactor }) => {
     index++;
     // only updates carbon
     chartDemo.data.labels.shift();
@@ -76,9 +77,13 @@ socket.on('carbon', newData => {
         dataset.data.shift();
         if (dataset.label == 'CO2') {
             dataset.data = newData;
-            console.log(dataset.data);
+            // console.log(dataset.data);
+        } else if (dataset.label == 'Capital') {
+            capital *= carbonFactor * Math.log10(power);
+            dataset.data.push(capital);
         } else {
-            dataset.data.push(dataset.data[dataset.data.length - 1]);
+            power -= 0.3;
+            dataset.data.push(power);
         }
     });
 
