@@ -16,7 +16,7 @@ socket.on('init', ({ chartData, initIndex }) => {
             responsive: true,
             maintainAspectRatio: false,
             barValueSpacing: 1,
-            borderWidth:3,
+            borderWidth: 3,
 
             plugins: {
                 title: {
@@ -127,7 +127,7 @@ socket.on('carbon', ({ newData, carbonFactor }) => {
         if (dataset.label == 'Carbon Dioxide') {
             dataset.data = newData;
             // console.log(dataset.data);
-            carbon=newData.slice(-1)[0];
+            carbon = newData.slice(-1)[0];
         } else if (dataset.label == 'Capital') {
             // console.log(carbonFactor * Math.log10(power));
             capital *= carbonFactor * (1 + Math.log10(power));
@@ -147,9 +147,7 @@ socket.on('carbon', ({ newData, carbonFactor }) => {
 
     testGameOver();
 
-    document.getElementById("CO2_Emission").innerHTML = carbon;
-    document.getElementById("Productivity").innerHTML = power;
-    document.getElementById("Capital").innerHTML = capital;
+    update();
 
 })
 
@@ -188,19 +186,23 @@ document.querySelectorAll('.choices').forEach(ele => {
         clickCooldown = true;
         setTimeout(() => clickCooldown = false, 3000);
 
+        update();
 
-        document.getElementById("CO2_Emission").innerHTML = carbon;
-        document.getElementById("Productivity").innerHTML = power;
-        document.getElementById("Capital").innerHTML = capital;
 
     })
 })
 
-        testGameOver();
+testGameOver();
 
 function testGameOver() {
     if (capital <= 0) {
         socket.off('carbon');
         alert("Game over");
     }
+}
+
+function update() {
+    document.getElementById("CO2_Emission").innerHTML = parseFloat(carbon).toFixed(2) + 'ppm';
+    document.getElementById("Productivity").innerHTML = parseFloat(power).toFixed(2);
+    document.getElementById("Capital").innerHTML = parseFloat(capital).toFixed(2);
 }
